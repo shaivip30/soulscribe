@@ -1,40 +1,63 @@
-// components/EntryForm.tsx
-
 import { useState, useEffect } from "react";
 
 type Props = {
   onAnalyze: (text: string) => void;
   injectedPrompt?: string;
+  saving?: boolean;
 };
 
-export default function EntryForm({ onAnalyze, injectedPrompt }: Props) {
+export default function EntryForm({ onAnalyze, injectedPrompt, saving = false }: Props) {
   const [text, setText] = useState("");
+  const charCount = text.length;
 
   useEffect(() => {
     if (injectedPrompt) setText(injectedPrompt);
   }, [injectedPrompt]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onAnalyze(text);
+    if (!text.trim() || saving) return;
+    await onAnalyze(text);
     setText("");
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <textarea
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Write your thoughts here..."
-        className="w-full h-40 p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300 resize-none"
-        required
-      />
-      <button
-        type="submit"
-        className="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600"
-      >
-        Analyze Emotion
-      </button>
+    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+      <div style={{ position: "relative" }}>
+        <textarea
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder="Begin writing — your words are safe here…"
+          className="soulscribe-input"
+          style={{ height: "160px", paddingBottom: "36px" }}
+          required
+          disabled={saving}
+        />
+        <span style={{
+          position: "absolute", bottom: "12px", right: "14px",
+          fontSize: "0.72rem", color: charCount > 0 ? "#b8919d" : "transparent",
+          fontFamily: "'DM Sans', sans-serif", transition: "color 0.2s",
+        }}>
+          {charCount} chars
+        </span>
+      </div>
+
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <p style={{
+          fontSize: "0.78rem", color: "#c4a0ac",
+          fontFamily: "'DM Sans', sans-serif", fontStyle: "italic",
+        }}>
+          {saving ? "Saving to your journal…" : "AI will detect your emotional tone"}
+        </p>
+        <button
+          type="submit"
+          className="btn-primary"
+          disabled={saving || !text.trim()}
+          style={{ opacity: saving || !text.trim() ? 0.6 : 1, cursor: saving ? "wait" : "pointer" }}
+        >
+          {saving ? <span className="shimmer">Saving…</span> : "✦ Analyze Emotion"}
+        </button>
+      </div>
     </form>
   );
 }

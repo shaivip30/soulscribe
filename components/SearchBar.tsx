@@ -5,13 +5,26 @@ type Props = {
 
 export default function SearchBar({ value, onChange }: Props) {
   return (
-    <div className="mb-4">
+    <div style={{ position: "relative" }}>
+      <span style={{
+        position: "absolute", left: "14px", top: "50%",
+        transform: "translateY(-50%)",
+        fontSize: "0.9rem", color: "#c4a0ac",
+        pointerEvents: "none",
+      }}>
+        ⌕
+      </span>
       <input
         type="text"
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        placeholder="🔍 Search your thoughts..."
-        className="w-full p-2 border rounded shadow-sm text-pink-800 border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-400"
+        placeholder="Search your thoughts…"
+        className="soulscribe-input"
+        style={{
+          paddingLeft: "36px",
+          height: "44px",
+          borderRadius: "50px",
+        }}
       />
     </div>
   );

@@ -1,5 +1,3 @@
-// components/JournalPrompts.tsx
-
 import { useState } from "react";
 
 const prompts = [
@@ -18,28 +16,70 @@ type Props = {
 
 export default function JournalPrompts({ onUsePrompt }: Props) {
   const [index, setIndex] = useState(Math.floor(Math.random() * prompts.length));
+  const [flipping, setFlipping] = useState(false);
 
   const nextPrompt = () => {
-    const newIndex = (index + 1) % prompts.length;
-    setIndex(newIndex);
+    setFlipping(true);
+    setTimeout(() => {
+      setIndex((i) => (i + 1) % prompts.length);
+      setFlipping(false);
+    }, 220);
   };
 
   return (
-    <div className="bg-white p-4 rounded shadow mb-6">
-      <p className="text-gray-800 mb-2"> Prompt:</p>
-      <blockquote className="italic text-pink-700 mb-2">"{prompts[index]}"</blockquote>
-      <div className="flex gap-2">
+    <div
+      className="glass-card px-6 py-5"
+      style={{ position: "relative", overflow: "hidden" }}
+    >
+      {/* Subtle decorative quote mark */}
+      <span style={{
+        position: "absolute", top: "6px", right: "18px",
+        fontFamily: "'Cormorant Garamond', serif",
+        fontSize: "5rem", lineHeight: 1,
+        color: "rgba(200,100,120,0.08)",
+        userSelect: "none", pointerEvents: "none",
+        fontWeight: 700,
+      }}>"</span>
+
+      <p style={{
+        fontFamily: "'DM Sans', sans-serif",
+        fontSize: "0.7rem",
+        letterSpacing: "0.14em",
+        textTransform: "uppercase",
+        color: "#b8919d",
+        fontWeight: 500,
+        marginBottom: "10px",
+      }}>
+        Today's Prompt
+      </p>
+
+      <blockquote
+        style={{
+          fontFamily: "'Cormorant Garamond', serif",
+          fontSize: "1.28rem",
+          fontStyle: "italic",
+          fontWeight: 400,
+          color: "var(--rose-deep)",
+          lineHeight: 1.5,
+          marginBottom: "16px",
+          minHeight: "2.6em",
+          transition: "opacity 0.22s ease, transform 0.22s ease",
+          opacity: flipping ? 0 : 1,
+          transform: flipping ? "translateY(-6px)" : "translateY(0)",
+        }}
+      >
+        "{prompts[index]}"
+      </blockquote>
+
+      <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
         <button
           onClick={() => onUsePrompt(prompts[index])}
-          className="px-3 py-1 bg-pink-500 text-white rounded hover:bg-pink-600"
+          className="btn-primary"
         >
           Use Prompt
         </button>
-        <button
-          onClick={nextPrompt}
-          className="px-3 py-1 border border-pink-300 text-pink-500 rounded hover:bg-pink-50"
-        >
-          Shuffle
+        <button onClick={nextPrompt} className="btn-ghost">
+          Shuffle ↻
         </button>
       </div>
     </div>
