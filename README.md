@@ -1,6 +1,6 @@
 # 🌙 SoulScribe
 
-> *An AI-powered emotionally aware journaling experience designed to help users reflect, heal, and grow.*
+> *An AI-powered emotionally aware journaling platform that helps users reflect, understand their emotions, and build healthier mindfulness habits.*
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-83.5%25-blue?style=for-the-badge\&logo=typescript)
 ![CSS](https://img.shields.io/badge/CSS-14.3%25-purple?style=for-the-badge\&logo=css3)
@@ -8,125 +8,323 @@
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
 
-## ✨ Overview
-**SoulScribe** is a modern AI-assisted journaling platform focused on emotional awareness and mental wellness.
-The app helps users express thoughts freely while intelligently understanding emotional patterns through AI-driven insights.
-Whether you're tracking your mood, reflecting on your day, or simply trying to organize your thoughts, SoulScribe creates a calming and personalized journaling experience.
+---
 
-## 🧠 Features
-* ✍️ AI-powered journaling assistance
-* 😊 Emotion & mood detection
-* 📈 Mood tracking and emotional insights
-* 🌙 Clean and calming UI/UX
-* 🔒 Private and secure journaling
-* ⚡ Fast and responsive interface
-* 📱 Mobile-friendly design
-* 🎯 Personalized writing experience
-* 📊 Emotional pattern visualization
-* 🧘 Mindfulness-focused experience
+# ✨ Overview
 
-## 🛠️ Tech Stack
+**SoulScribe** is an AI-powered journaling application designed to make self-reflection more meaningful and accessible.
 
-### Frontend
-* **TypeScript**
-* **JavaScript**
-* **CSS**
+Users can freely express their thoughts while the platform analyzes journal entries to identify emotions, track mood patterns, and provide personalized insights. SoulScribe combines modern web technologies with Natural Language Processing (NLP) to create a calming digital space focused on emotional well-being.
 
-### Tools & Platform
-* Git & GitHub
-* Modern AI integrations
-* Responsive UI architecture
+Whether you're documenting your day, monitoring your mental wellness, or simply organizing your thoughts, SoulScribe helps transform journaling into a mindful and insightful experience.
 
-## 📂 Project Structure
+---
+
+# 🏗️ System Architecture
+
+```mermaid
+flowchart LR
+    User --> Frontend[React + TypeScript Frontend]
+
+    Frontend --> Auth[Authentication]
+    Frontend --> Journal[Journal Editor]
+
+    Journal --> Emotion[Emotion Detection Engine]
+    Emotion --> Insights[AI Insight Generation]
+
+    Journal --> Database[(Database)]
+
+    Insights --> Dashboard[Mood Dashboard]
+    Database --> Dashboard
+```
+
+---
+
+# 🧠 Key Features
+
+### ✍️ Intelligent Journaling
+
+* Create and manage journal entries
+* Clean, distraction-free writing experience
+* Personalized journaling workflow
+
+### 😊 Emotion Detection
+
+* NLP-powered sentiment analysis
+* Emotion classification from journal text
+* Automatic mood recognition
+
+### 📈 Mood Insights
+
+* Track emotional patterns over time
+* Visualize mood trends
+* Gain deeper self-awareness
+
+### 🔒 Secure Experience
+
+* User authentication
+* Private journal storage
+* Secure access to personal entries
+
+### 📱 Responsive Design
+
+* Mobile-friendly interface
+* Optimized user experience across devices
+* Modern and intuitive UI
+
+---
+
+# 📝 User Journey
+
+```mermaid
+flowchart TD
+    A[User Login] --> B[Create Journal Entry]
+    B --> C[Save Entry]
+    C --> D[Emotion Analysis]
+    D --> E[Generate Insights]
+    E --> F[Store Results]
+    F --> G[View Mood Dashboard]
+```
+
+---
+
+# 🧠 Emotion Analysis Pipeline
+
+```mermaid
+flowchart LR
+    A[Journal Text]
+    --> B[Text Preprocessing]
+
+    B --> C[Emotion Detection]
+
+    C --> D[Mood Classification]
+
+    D --> E[Insight Generation]
+
+    E --> F[Visualization Dashboard]
+```
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+
+* React
+* TypeScript
+* JavaScript
+* CSS
+
+## AI / NLP
+
+* Natural Language Processing (NLP)
+* Emotion Detection Pipeline
+* Sentiment Analysis
+
+## Backend & Database
+
+* Supabase
+* Authentication System
+* Cloud Data Storage
+
+## Development Tools
+
+* Git
+* GitHub
+* VS Code
+
+---
+
+# 📂 Project Structure
+
+```mermaid
+graph TD
+
+    SoulScribe
+
+    SoulScribe --> Public[public]
+
+    SoulScribe --> Src[src]
+
+    Src --> Components[components]
+    Src --> Pages[pages]
+    Src --> Styles[styles]
+    Src --> Utils[utils]
+    Src --> Services[services]
+```
+
 ```bash
 SoulScribe/
 │
-├── public/             # Static assets
-├── src/                # Main source code
-│   ├── components/     # Reusable UI components
-│   ├── pages/          # App pages
-│   ├── styles/         # CSS & styling
-│   ├── utils/          # Helper functions
-│   └── services/       # API & AI logic
+├── public/
+│
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── styles/
+│   ├── utils/
+│   └── services/
 │
 ├── package.json
 ├── tsconfig.json
 └── README.md
 ```
 
-## 🚀 Getting Started
+---
 
-### 1️⃣ Clone the repository
+# 🚀 Getting Started
+
+## 1. Clone the Repository
 
 ```bash
 git clone https://github.com/shaivip30/soulscribe.git
 ```
 
-### 2️⃣ Navigate into the project
+## 2. Navigate to Project Directory
 
 ```bash
 cd soulscribe
 ```
 
-### 3️⃣ Install dependencies
+## 3. Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 4️⃣ Start the development server
+## 4. Start Development Server
 
 ```bash
 npm run dev
 ```
 
-## 🌟 Why SoulScribe?
-Mental wellness tools often feel robotic or overwhelming.
-SoulScribe focuses on creating a **safe, minimal, and emotionally intelligent space** where users can write naturally and receive thoughtful emotional insights.
-The goal is not just productivity — but reflection, mindfulness, and emotional clarity.
+---
 
-## 🔮 Future Improvements
-* AI-generated journal summaries
-* Voice journaling support
-* Emotion-based music recommendations
-* Streaks & habit tracking
-* Secure cloud sync
-* Dark/light theme customization
-* AI therapist-style reflection prompts
+# 🌟 Why SoulScribe?
 
-## 🤝 Contributing
+Most journaling applications focus solely on note-taking.
+
+SoulScribe goes beyond traditional journaling by helping users:
+
+* Understand emotional patterns
+* Build self-awareness
+* Practice mindfulness
+* Reflect on personal growth
+* Gain meaningful insights from everyday experiences
+
+The goal is to create a safe and emotionally intelligent digital companion rather than just another note-taking application.
+
+---
+
+# 📊 Feature Overview
+
+```mermaid
+mindmap
+  root((SoulScribe))
+    Journaling
+      Create Entries
+      Edit Entries
+      History
+
+    AI Features
+      Emotion Detection
+      Mood Analysis
+      Insights
+
+    User Experience
+      Responsive Design
+      Authentication
+      Clean UI
+
+    Future Features
+      Voice Journaling
+      Therapy Chatbot
+      Music Recommendations
+```
+
+---
+
+# 🔮 Future Roadmap
+
+```mermaid
+timeline
+    title SoulScribe Development Roadmap
+
+    Phase 1 : Journaling System
+            : Emotion Detection
+            : Mood Tracking
+
+    Phase 2 : Authentication
+            : Cloud Storage
+            : User Profiles
+
+    Phase 3 : AI Reflections
+            : Music Recommendations
+            : Advanced Analytics
+
+    Phase 4 : Therapy Chatbot
+            : Voice Journaling
+            : Habit Tracking
+```
+
+### Planned Enhancements
+
+* 🤖 AI-generated reflections
+* 🎵 Emotion-based music recommendations
+* 🎙️ Voice journaling support
+* 🔥 Streak and habit tracking
+* 🌗 Dark/Light theme support
+* 💬 AI therapy chatbot
+* 📊 Advanced mood analytics
+
+---
+
+# 🤝 Contributing
+
 Contributions are welcome!
 
 ```bash
-# Fork the repo
-# Create your feature branch
+# Fork the repository
+
+# Create a new feature branch
 git checkout -b feature/amazing-feature
 
-# Commit changes
+# Commit your changes
 git commit -m "Add amazing feature"
 
-# Push branch
+# Push to GitHub
 git push origin feature/amazing-feature
 ```
+
 Then open a Pull Request 🚀
 
-## 📜 License
+---
+
+# 📜 License
+
 This project is licensed under the **MIT License**.
 
-## 👨‍💻 Author
+---
 
-Made with ❤️ by
-### [Shaivi P](https://github.com/shaivip30?utm_source=chatgpt.com)
+# 👨‍💻 Author
 
+Made with ❤️ by **Shaivi Pandey**
 
-## ⭐ Support
-If you like this project:
+GitHub: https://github.com/shaivip30
+
+---
+
+# ⭐ Support
+
+If you found this project helpful:
 
 * ⭐ Star the repository
-* 🍴 Fork it
+* 🍴 Fork the project
 * 🧠 Share feedback
 * 🚀 Contribute to development
 
-## 🔗 Repository
+---
 
-[SoulScribe GitHub Repository](https://github.com/shaivip30/soulscribe?utm_source=chatgpt.com)
+# 🔗 Repository
+
+https://github.com/shaivip30/soulscribe
